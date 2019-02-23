@@ -1,11 +1,15 @@
 language: node_js
+
 node_js: 
   - "stable"
+
 cache:
   directories:
     - "node_modules"
-before_install:
-  - pip install --user codecov
+  
+script:
+  - npm test
+
 after_success:
   - npm run coveralls
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
