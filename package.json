@@ -7,10 +7,11 @@
     "test": "cross-env NODE_ENV=test nyc mocha --timeout 10000 --require babel-register test --exit",
     
     "lint": "eslint . --fix",
-    "seed": "babel-node server/seeders/up",
-    "drop": "babel-node server/seeders/drop",
-    "seed:undo": "babel-node server/seeders/down",
+    "seed": "knex seed:run --env test",
+    "drop": "knex migrate:rollback --env test",
+    "seed:undo": "knex migrate:rollback --env test",
     "db:setup": "npm run migrate && npm run seed",
+    "migrate": "knex migrate:latest --env test",
 
     "coverage": "nyc report --reporter=text-lcov --reporter=lcov | coveralls"
   },
