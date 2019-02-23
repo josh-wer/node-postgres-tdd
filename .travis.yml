@@ -7,6 +7,18 @@ cache:
   directories:
     - "node_modules"
 
+services: 
+  - postgresql 
+
+postgres: 
+  adapter: postgresql
+  database: mocha_chai_tv_shows_test
+  username: postgres
+
+before_script:
+  - psql -c 'create database mocha_chai_tv_shows_test;' -U postgres
+  - npm run db:setup
+
 script:
   - npm test
 
