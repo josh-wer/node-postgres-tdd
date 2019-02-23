@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "test": "mocha"
+    "test": "cross-env NODE_ENV=test nyc mocha --timeout 10000 --require babel-register test --exit",
+    "coverage": "nyc report --reporter=text-lcov --reporter=lcov | coveralls"
   },
   "dependencies": {
     "cookie-parser": "~1.4.3",
@@ -17,11 +18,17 @@
     "pg": "^7.8.0"
   },
   "devDependencies": {
+    "babel-register": "^6.26.0",
     "chai": "^4.2.0",
     "chai-http": "^4.2.1",
+    "coveralls": "^3.0.3",
+    "cross-env": "^5.2.0",
     "eslint": "^5.14.1",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.16.0",
-    "mocha": "^5.2.0"
+    "istanbul": "^0.4.5",
+    "mocha": "^5.2.0",
+    "mocha-lcov-reporter": "^1.3.0",
+    "nyc": "^13.3.0"
   }
 }

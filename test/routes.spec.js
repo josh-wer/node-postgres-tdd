@@ -7,6 +7,7 @@ const chai = require('chai');
 // const chaiHttp = require('chai-http');
 // const server = require('../app');
 // const knex = require('../db/knex');
+const demo = require('../db/demo');
 
 chai.should();
 
@@ -14,10 +15,10 @@ chai.should();
 describe('Dummy tests', () => {
   describe('Can perform arithmetics', () => {
     it('should add two numbers', () => {
-      (2 + 2).should.equal(4);
+      demo.sum(2, 2).should.equal(4);
     });
     it('should multiple two numbers', () => {
-      (5 * 2).should.equal(10);
+      demo.mul(5, 2).should.equal(10);
     });
   });
 
